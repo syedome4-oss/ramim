@@ -1,14 +1,14 @@
 import streamlit as st
 import sqlite3
 
-# Page Configuration
+
 st.set_page_config(
     page_title="Employee Record System",
     page_icon="💼",
     layout="wide"
 )
 
-# Database Connection
+
 conn = sqlite3.connect("employees.db")
 cur = conn.cursor()
 
@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS employees (
 """)
 conn.commit()
 
-# Main Title
+
 st.title("💼 Employee Management System")
 st.caption("Manage Employee Information Easily")
 
-# Horizontal Navigation Menu
+
 menu = st.radio(
     "Navigation",
     [
@@ -43,7 +43,6 @@ menu = st.radio(
 
 st.divider()
 
-# 1. Register Employee
 if menu == "➕ Register Employee":
 
     st.header("➕ Register New Employee")
@@ -79,7 +78,6 @@ if menu == "➕ Register Employee":
             st.warning("Please enter employee name and email.")
 
 
-# 2. Employee Records
 elif menu == "👥 Employee Records":
 
     st.header("👥 Employee Records")
@@ -107,7 +105,6 @@ elif menu == "👥 Employee Records":
         st.info("No employee records found.")
 
 
-# 3. Edit Employee
 elif menu == "📝 Edit Employee":
 
     st.header("📝 Update Employee Information")
@@ -214,5 +211,4 @@ elif menu == "👤 About Me":
     st.write("- SQLite")
 
 
-# Close Database Connection
 conn.close()
